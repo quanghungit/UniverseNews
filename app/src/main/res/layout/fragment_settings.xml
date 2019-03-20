@@ -1,0 +1,57 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    tools:context="com.MVP.team5.universenews.ui.fragment.SettingsFragment">
+
+    <!--<TextView-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:text="@string/font_size"-->
+        <!--android:textSize="20sp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+
+    <!--<TextView-->
+        <!--android:layout_marginTop="15dp"-->
+        <!--android:id="@+id/settings_fontSize"-->
+        <!--android:text="@string/font_small"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+
+    <!--<SeekBar-->
+        <!--android:layout_marginTop="15dp"-->
+        <!--android:id="@+id/settings_seekBar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content" />-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_marginTop="15dp"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<Switch-->
+            <!--android:id="@+id/nighShift"-->
+            <!--android:layout_marginRight="15dp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+
+        <!--<TextView-->
+            <!--android:text="@string/night_shift"-->
+            <!--android:textSize="20sp"-->
+            <!--android:textStyle="bold"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+    <!--</LinearLayout>-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comming Soon"/>
+
+</LinearLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Universe News</string>
+    <string name="main_menu">Trang chủ</string>
+    <string name="settings">Cài đặt</string>
+    <string name="about">Thông tin</string>
+    <string name="exit">Thoát</string>
+    <string name="font_size">Cỡ chữ</string>
+    <string name="font_small">Nhỏ</string>
+    <string name="font_normal">Bình thường</string>
+    <string name="font_big">To</string>
+    <string name="night_shift">Chế độ ban đêm</string>
+    <string name="language">Ngôn ngữ</string>
+    <string name="news_main">Trang chủ</string>
+    <string name="gamek_ict">Tin ICT</string>
+    <string name="aaa">Ứng dụng này yêu cầu kết nối internet, vui lòng thử lại.</string>
+    <string name="exit_text"><font color="#40C4FF">Bạn thực sự muốn thoát ứng dụng tuyệt vời này? :((</font></string>
+</resources>

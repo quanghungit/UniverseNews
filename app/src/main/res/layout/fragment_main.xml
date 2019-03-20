@@ -1,0 +1,184 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context="com.MVP.team5.universenews.ui.activity.MainActivity">
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/imGamek2"
+            android:clickable="true"
+            android:layout_marginRight="18dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/imGamek"
+                android:background="@drawable/newspaper_gamek"
+                android:layout_width="90dp"
+                android:layout_height="90dp" />
+
+            <TextView
+                android:id="@+id/aaa"
+                android:textColor="@color/colorNewspaperName"
+                android:layout_gravity="center"
+                android:textSize="14dp"
+                android:fontFamily="monospace"
+                android:textStyle="bold"
+                android:text="Gamek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginRight="18dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/imGenk"
+                android:background="@drawable/newspaper_genk"
+                android:layout_width="90dp"
+                android:layout_height="90dp" />
+
+            <TextView
+                android:textColor="@color/colorNewspaperName"
+                android:layout_gravity="center"
+                android:textSize="14dp"
+                android:fontFamily="monospace"
+                android:textStyle="bold"
+                android:text="GenK"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginRight="18dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/imDantri"
+                android:background="@drawable/newspaper_dantri"
+                android:layout_width="90dp"
+                android:layout_height="90dp" />
+
+            <TextView
+                android:textColor="@color/colorNewspaperName"
+                android:layout_gravity="center"
+                android:textSize="14dp"
+                android:fontFamily="monospace"
+                android:textStyle="bold"
+                android:text="DanTri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="50px"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:clickable="true"
+            android:layout_marginRight="18dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/imSoha"
+                android:background="@drawable/newspaper_soha"
+                android:layout_width="90dp"
+                android:layout_height="90dp" />
+
+            <TextView
+                android:textColor="@color/colorNewspaperName"
+                android:layout_gravity="center"
+                android:textSize="14dp"
+                android:fontFamily="monospace"
+                android:textStyle="bold"
+                android:text="Soha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_marginRight="18dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/imGenks"
+                android:background="@drawable/baomoi"
+                android:layout_width="90dp"
+                android:layout_height="90dp" />
+
+            <TextView
+                android:textColor="@color/colorNewspaperName"
+                android:layout_gravity="center"
+                android:textSize="14dp"
+                android:fontFamily="monospace"
+                android:textStyle="bold"
+                android:text="BaoMoi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginRight="18dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/imDantris"
+                android:background="@drawable/kenh14"
+                android:layout_width="90dp"
+                android:layout_height="90dp" />
+
+            <TextView
+                android:textColor="@color/colorNewspaperName"
+                android:layout_gravity="center"
+                android:textSize="14dp"
+                android:fontFamily="monospace"
+                android:textStyle="bold"
+                android:text="Kenh14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

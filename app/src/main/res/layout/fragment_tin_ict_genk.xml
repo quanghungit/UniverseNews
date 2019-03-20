@@ -1,0 +1,14 @@
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/genk_ict_refreshlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.MVP.team5.universenews.ui.fragment.genk.TinIctGenkFragment">
+
+    <ListView
+        android:id="@+id/genk_tinict_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"/>
+
+</android.support.v4.widget.SwipeRefreshLayout>
