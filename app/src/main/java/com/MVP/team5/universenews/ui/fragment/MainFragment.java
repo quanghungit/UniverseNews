@@ -17,9 +17,11 @@ import android.widget.Toast;
 
 import com.MVP.team5.universenews.R;
 import com.MVP.team5.universenews.ui.activity.MainActivity;
+import com.MVP.team5.universenews.ui.fragment.baomoi.BaoMoiFragment;
 import com.MVP.team5.universenews.ui.fragment.dantri.DanTriFragment;
 import com.MVP.team5.universenews.ui.fragment.genk.GenkFragment;
 import com.MVP.team5.universenews.ui.fragment.gamek.GamekFragment;
+import com.MVP.team5.universenews.ui.fragment.haitugio.HaiTuGioFragment;
 import com.MVP.team5.universenews.ui.fragment.soha.SoHaFragment;
 
 /**
@@ -27,7 +29,7 @@ import com.MVP.team5.universenews.ui.fragment.soha.SoHaFragment;
  */
 public class MainFragment extends Fragment implements View.OnClickListener {
 
-    ImageButton gamek, genk, dantri, soha;
+    ImageButton gamek, genk, dantri, soha, baomoi, haitugio;
     TextView textView;
 
     MainActivity mainActivity;
@@ -60,12 +62,17 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         genk = view.findViewById(R.id.imGenk);
         dantri = view.findViewById(R.id.imDantri);
         soha = view.findViewById(R.id.imSoha);
+        baomoi = view.findViewById(R.id.imbaomoi);
+        haitugio = view.findViewById(R.id.im24gio);
+
         textView = view.findViewById(R.id.aaa);
 
         gamek.setOnClickListener(this);
         genk.setOnClickListener(this);
         dantri.setOnClickListener(this);
         soha.setOnClickListener(this);
+        baomoi.setOnClickListener(this);
+        haitugio.setOnClickListener(this);
     }
 
     @Override
@@ -101,6 +108,22 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                 } else {
                     ((MainActivity) getActivity()).changeFragment(new SoHaFragment());
                     ((MainActivity) getActivity()).setTitle("SOHA");
+                }
+                break;
+            case R.id.imbaomoi:
+                if (isOnline() == false) {
+                    Toast.makeText((MainActivity) getActivity(), getString(R.string.check_network), Toast.LENGTH_SHORT).show();
+                } else {
+                    ((MainActivity) getActivity()).changeFragment(new BaoMoiFragment());
+                    ((MainActivity) getActivity()).setTitle("Báo Mới");
+                }
+                break;
+            case R.id.im24gio:
+                if (isOnline() == false) {
+                    Toast.makeText((MainActivity) getActivity(), getString(R.string.check_network), Toast.LENGTH_SHORT).show();
+                } else {
+                    ((MainActivity) getActivity()).changeFragment(new HaiTuGioFragment());
+                    ((MainActivity) getActivity()).setTitle("24h");
                 }
                 break;
         }

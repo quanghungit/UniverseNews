@@ -1,4 +1,4 @@
-package com.MVP.team5.universenews.ui.fragment.dantri;
+package com.MVP.team5.universenews.ui.fragment.haitugio;
 
 
 import android.annotation.SuppressLint;
@@ -14,8 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.MVP.team5.universenews.R;
-import com.MVP.team5.universenews.ui.fragment.dantri.adapter.DanTriKHCNAdapter;
-import com.MVP.team5.universenews.ui.fragment.dantri.model.DanTri_KHCN_Content;
+import com.MVP.team5.universenews.ui.fragment.haitugio.adapter.HaiTuGioTCAdapter;
+import com.MVP.team5.universenews.ui.fragment.haitugio.model.HaiTuGio_TC_Content;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -27,17 +27,17 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DanTriKHCNFragment extends Fragment {
+public class HaiTuGioTCFragment extends Fragment {
 
     private static final String TAG = "HaiTuGioTCFragment";
     private SwipeRefreshLayout swipeRefreshLayout;
 
     ListView list;
-    ArrayList<DanTri_KHCN_Content> datas;
-    DanTriKHCNAdapter adapter;
+    ArrayList<HaiTuGio_TC_Content> datas;
+    HaiTuGioTCAdapter adapter;
 
 
-    public DanTriKHCNFragment() {
+    public HaiTuGioTCFragment() {
         // Required empty public constructor
     }
 
@@ -46,14 +46,14 @@ public class DanTriKHCNFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dan_tri_khcn, container, false);
+        return inflater.inflate(R.layout.fragment_24h_trangchu, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        list = view.findViewById(R.id.dantri_khcn_listview);
-        swipeRefreshLayout = view.findViewById(R.id.dantri_khcn_refresh);
+        list = view.findViewById(R.id.haitugio_tc_listview);
+        swipeRefreshLayout = view.findViewById(R.id.haitugio_tc_refresh);
         setupData();
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -65,19 +65,19 @@ public class DanTriKHCNFragment extends Fragment {
         });
     }
 
-    private void setUpWidget(ArrayList<DanTri_KHCN_Content> datas) {
-        DanTriKHCNAdapter adapter = new DanTriKHCNAdapter(datas, getActivity());
+    private void setUpWidget(ArrayList<HaiTuGio_TC_Content> datas) {
+        HaiTuGioTCAdapter adapter = new HaiTuGioTCAdapter(datas, getActivity());
         Log.d(TAG, "setUpWidget: " + datas.size());
         list.setAdapter(adapter);
     }
 
     @SuppressLint("StaticFieldLeak")
     private void setupData() {
-        new AsyncTask<Void, Void, ArrayList<DanTri_KHCN_Content>>() {
-            ArrayList<DanTri_KHCN_Content> datas = new ArrayList<>();
+        new AsyncTask<Void, Void, ArrayList<HaiTuGio_TC_Content>>() {
+            ArrayList<HaiTuGio_TC_Content> datas = new ArrayList<>();
 
             @Override
-            protected ArrayList<DanTri_KHCN_Content> doInBackground(Void... voids) {
+            protected ArrayList<HaiTuGio_TC_Content> doInBackground(Void... voids) {
                 try {
                     String title = "";
                     String link = "";
@@ -106,7 +106,7 @@ public class DanTriKHCNFragment extends Fragment {
                             link = link1.attr("href");
                         }
                         String linkd = "http://m.dantri.com.vn" + link;
-                        datas.add(new DanTri_KHCN_Content(title, linkd, des, img));
+                        datas.add(new HaiTuGio_TC_Content(title, linkd, des, img));
                     }
                 } catch (Exception e) {
 
@@ -115,7 +115,7 @@ public class DanTriKHCNFragment extends Fragment {
             }
 
             @Override
-            protected void onPostExecute(ArrayList<DanTri_KHCN_Content> data) {
+            protected void onPostExecute(ArrayList<HaiTuGio_TC_Content> data) {
                 super.onPostExecute(data);
                 setUpWidget(data);
             }

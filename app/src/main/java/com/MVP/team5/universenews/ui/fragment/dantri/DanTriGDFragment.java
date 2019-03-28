@@ -28,7 +28,7 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class DanTriGDFragment extends Fragment {
-    private static final String TAG = "DanTriKHCNFragment";
+    private static final String TAG = "HaiTuGioTCFragment";
     private SwipeRefreshLayout swipeRefreshLayout;
 
     ListView list;

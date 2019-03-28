@@ -1,4 +1,4 @@
-package com.MVP.team5.universenews.ui.fragment.dantri;
+package com.MVP.team5.universenews.ui.fragment.baomoi;
 
 
 import android.annotation.SuppressLint;
@@ -14,8 +14,9 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.MVP.team5.universenews.R;
-import com.MVP.team5.universenews.ui.fragment.dantri.adapter.DanTriKHCNAdapter;
-import com.MVP.team5.universenews.ui.fragment.dantri.model.DanTri_KHCN_Content;
+import com.MVP.team5.universenews.ui.fragment.baomoi.adapter.BaoMoiGTAdapter;
+import com.MVP.team5.universenews.ui.fragment.baomoi.model.BaoMoi_GT_Content;
+import com.MVP.team5.universenews.ui.fragment.baomoi.model.BaoMoi_TT_Content;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -27,33 +28,28 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DanTriKHCNFragment extends Fragment {
-
+public class BaoMoiGTFragment extends Fragment {
     private static final String TAG = "HaiTuGioTCFragment";
     private SwipeRefreshLayout swipeRefreshLayout;
 
     ListView list;
-    ArrayList<DanTri_KHCN_Content> datas;
-    DanTriKHCNAdapter adapter;
+    ArrayList<BaoMoi_GT_Content> datas;
+    BaoMoiGTAdapter adapter;
 
-
-    public DanTriKHCNFragment() {
-        // Required empty public constructor
-    }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dan_tri_khcn, container, false);
+        return inflater.inflate(R.layout.fragment_baomoi_giaitri, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        list = view.findViewById(R.id.dantri_khcn_listview);
-        swipeRefreshLayout = view.findViewById(R.id.dantri_khcn_refresh);
+        list = view.findViewById(R.id.baomoi_gt_listview);
+        swipeRefreshLayout = view.findViewById(R.id.baomoi_gt_refresh);
         setupData();
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -65,25 +61,25 @@ public class DanTriKHCNFragment extends Fragment {
         });
     }
 
-    private void setUpWidget(ArrayList<DanTri_KHCN_Content> datas) {
-        DanTriKHCNAdapter adapter = new DanTriKHCNAdapter(datas, getActivity());
+    private void setUpWidget(ArrayList<BaoMoi_GT_Content> datas) {
+        BaoMoiGTAdapter adapter = new BaoMoiGTAdapter(datas, getActivity());
         Log.d(TAG, "setUpWidget: " + datas.size());
         list.setAdapter(adapter);
     }
 
     @SuppressLint("StaticFieldLeak")
     private void setupData() {
-        new AsyncTask<Void, Void, ArrayList<DanTri_KHCN_Content>>() {
-            ArrayList<DanTri_KHCN_Content> datas = new ArrayList<>();
+        new AsyncTask<Void, Void, ArrayList<BaoMoi_GT_Content>>() {
+            ArrayList<BaoMoi_GT_Content> datas = new ArrayList<>();
 
             @Override
-            protected ArrayList<DanTri_KHCN_Content> doInBackground(Void... voids) {
+            protected ArrayList<BaoMoi_GT_Content> doInBackground(Void... voids) {
                 try {
                     String title = "";
                     String link = "";
                     String des = "";
                     String img = "";
-                    Document document = Jsoup.connect("http://m.dantri.com.vn/khoa-hoc-cong-nghe.htm")
+                    Document document = Jsoup.connect("http://m.dantri.com.vn/giao-duc-khuyen-hoc.htm")
                             .userAgent("Mozilla/5.0 (Linux; Android 7.0; PLUS Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.98 Mobile Safari/537.36")
                             .get();
                     Elements elements = document.select("ul.lst_w").select("li");
@@ -105,8 +101,8 @@ public class DanTriKHCNFragment extends Fragment {
                         if (link1 != null) {
                             link = link1.attr("href");
                         }
-                        String linkd = "http://m.dantri.com.vn" + link;
-                        datas.add(new DanTri_KHCN_Content(title, linkd, des, img));
+                        String linkd = "http://m.baomoi.com" + link;
+                        datas.add(new BaoMoi_GT_Content(title, linkd, des, img));
                     }
                 } catch (Exception e) {
 
@@ -115,7 +111,7 @@ public class DanTriKHCNFragment extends Fragment {
             }
 
             @Override
-            protected void onPostExecute(ArrayList<DanTri_KHCN_Content> data) {
+            protected void onPostExecute(ArrayList<BaoMoi_GT_Content> data) {
                 super.onPostExecute(data);
                 setUpWidget(data);
             }

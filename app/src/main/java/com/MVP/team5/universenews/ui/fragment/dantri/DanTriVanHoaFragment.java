@@ -29,7 +29,7 @@ import java.util.ArrayList;
  */
 public class DanTriVanHoaFragment extends Fragment {
 
-    private static final String TAG = "DanTriKHCNFragment";
+    private static final String TAG = "HaiTuGioTCFragment";
     private SwipeRefreshLayout swipeRefreshLayout;
 
     ListView list;
