@@ -17,6 +17,7 @@ import com.MVP.team5.universenews.R;
 import com.MVP.team5.universenews.databinding.FragmentSettingsBinding;
 import com.MVP.team5.universenews.databinding.NavHeaderMainBinding;
 import com.MVP.team5.universenews.ui.Utils.Utilities;
+import com.MVP.team5.universenews.ui.activity.MainActivity;
 import com.MVP.team5.universenews.ui.model.SettingsModel;
 
 import top.defaults.colorpicker.ColorPickerPopup;
@@ -80,7 +81,7 @@ public class SettingsFragment extends Fragment {
         skFont.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                // fontSize.setText(String.valueOf(i));
+                fontSize.setText(String.valueOf(i));
                 Utilities.saveFont(getContext(), i);
                 settingsModel.setFontSize(i);
                 binding.executePendingBindings();
@@ -116,15 +117,15 @@ public class SettingsFragment extends Fragment {
                                 v.setBackgroundColor(color);
                                 demoTheme.setBackgroundColor(color);
                                 toolbar.setBackgroundColor(color);
+
                                 Utilities.saveTheme(getContext(), color);
                                 Utilities.setStatusBarColor(getActivity(), color);
 
-                                final LayoutInflater factory = getLayoutInflater();
+                                settingsModel.setThemeApp(color);
 
-                                final View textEntryView = factory.inflate(R.layout.nav_header_main, null);
+                                getActivity().findViewById(R.id.mainHeader).setBackgroundColor(color);
 
-                                View view = textEntryView.findViewById(R.id.mainHeader);
-                                view.setBackgroundColor(color);
+                                demoTheme.setBackgroundColor(color);
 
                                 binding.executePendingBindings();
                                 binding.invalidateAll();

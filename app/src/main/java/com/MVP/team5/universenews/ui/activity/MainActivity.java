@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.MVP.team5.universenews.R;
 import com.MVP.team5.universenews.databinding.ActivityMainBinding;
 import com.MVP.team5.universenews.databinding.NavHeaderMainBinding;
+import com.MVP.team5.universenews.ui.Utils.Utilities;
 import com.MVP.team5.universenews.ui.fragment.AboutFragment;
 import com.MVP.team5.universenews.ui.fragment.MainFragment;
 import com.MVP.team5.universenews.ui.fragment.SettingsFragment;
@@ -31,14 +32,14 @@ import com.MVP.team5.universenews.ui.model.SettingsModel;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    ActivityMainBinding binding;
-    SettingsModel settingsModel;
+    public static ActivityMainBinding binding;
+    public static SettingsModel settingsModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
-
+        Utilities.setStatusBarColor(this, Utilities.getTheme(this));
         settingsModel = (SettingsModel) getIntent().getSerializableExtra("setting");
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setSetting(settingsModel);

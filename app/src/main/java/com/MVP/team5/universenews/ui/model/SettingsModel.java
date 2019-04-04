@@ -1,16 +1,20 @@
 package com.MVP.team5.universenews.ui.model;
 
+import android.graphics.Color;
+
 import java.io.Serializable;
 
 public class SettingsModel implements Serializable {
     int themeApp;
     int fontSize;
-    boolean nightShift;
+    int nightShift;
 
     public SettingsModel(int themeApp, int fontSize, boolean nightShift) {
         this.themeApp = themeApp;
         this.fontSize = fontSize;
-        this.nightShift = nightShift;
+        if (nightShift) {
+            this.nightShift = Color.parseColor("#d1cca5")
+        }
     }
 
     public int getThemeApp() {
@@ -29,11 +33,11 @@ public class SettingsModel implements Serializable {
         this.fontSize = fontSize;
     }
 
-    public boolean isNightShift() {
+    public int isNightShift() {
         return nightShift;
     }
 
-    public void setNightShift(boolean nightShift) {
+    public void setNightShift(int nightShift) {
         this.nightShift = nightShift;
     }
 
