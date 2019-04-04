@@ -71,7 +71,7 @@
 
             <ImageButton
                 android:id="@+id/imDantri"
-                android:background="@drawable/newspaper_dantri"
+                android:background="@drawable/baomoi"
                 android:layout_width="90dp"
                 android:layout_height="90dp" />
 

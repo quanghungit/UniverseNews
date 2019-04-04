@@ -16,6 +16,7 @@ import android.widget.ListView;
 import com.MVP.team5.universenews.R;
 import com.MVP.team5.universenews.ui.fragment.dantri.adapter.DanTriGDAdapter;
 import com.MVP.team5.universenews.ui.fragment.dantri.model.DanTri_GD_Content;
+import com.MVP.team5.universenews.ui.fragment.dantri.model.DanTri_KHCN_Content;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -78,30 +79,35 @@ public class DanTriGDFragment extends Fragment {
                     String link = "";
                     String des = "";
                     String img = "";
-                    Document document = Jsoup.connect("http://m.dantri.com.vn/giao-duc-khuyen-hoc.htm")
-                            .userAgent("Mozilla/5.0 (Linux; Android 7.0; PLUS Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.98 Mobile Safari/537.36")
-                            .get();
-                    Elements elements = document.select("ul.lst_w").select("li");
+                    Document document = Jsoup.connect("https://vnexpress.net/phap-luat").get();
+
+                    Elements elements = document.select("article.list_news");
+
+
+                    System.out.println("Bao moi ne----" + elements.size());
                     Log.d(TAG, "doInBackground: ");
                     for (Element element : elements) {
-                        Element title1 = element.getElementsByTag("h3").first();
-                        Element link1 = element.getElementsByTag("a").first();
-                        Element des1 = element.getElementsByTag("i").first();
+
+                        Element title1 = element.select("h4.title_news").first();
+                        Element link1 = element.select("div.thumb_art > a").first();
                         Element img1 = element.getElementsByTag("img").first();
+                        Element des1 = element.select("p.description").first();
                         if (title1 != null) {
                             title = title1.text();
                         }
-                        if (des1 != null) {
-                            des = des1.attr("title");
-                        }
-                        if (img1 != null) {
-                            img = img1.attr("src");
-                        }
+
                         if (link1 != null) {
                             link = link1.attr("href");
                         }
-                        String linkd = "http://m.dantri.com.vn" + link;
-                        datas.add(new DanTri_GD_Content(title, linkd, des, img));
+
+                        if (img1 != null) {
+                            img = img1.attr("src");
+                        }
+
+                        if (des1 != null) {
+                            des = des1.text();
+                        }
+                        datas.add(new DanTri_GD_Content(title, link, des, img));
                     }
                 } catch (Exception e) {
 
@@ -115,6 +121,5 @@ public class DanTriGDFragment extends Fragment {
                 setUpWidget(data);
             }
         }.execute();
-
     }
 }

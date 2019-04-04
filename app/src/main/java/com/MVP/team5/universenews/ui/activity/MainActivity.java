@@ -2,6 +2,7 @@ package com.MVP.team5.universenews.ui.activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.databinding.DataBindingUtil;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -20,27 +21,43 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.MVP.team5.universenews.R;
+import com.MVP.team5.universenews.databinding.ActivityMainBinding;
+import com.MVP.team5.universenews.databinding.NavHeaderMainBinding;
 import com.MVP.team5.universenews.ui.fragment.AboutFragment;
 import com.MVP.team5.universenews.ui.fragment.MainFragment;
 import com.MVP.team5.universenews.ui.fragment.SettingsFragment;
+import com.MVP.team5.universenews.ui.model.SettingsModel;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    ActivityMainBinding binding;
+    SettingsModel settingsModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setContentView(R.layout.activity_main);
+
+        settingsModel = (SettingsModel) getIntent().getSerializableExtra("setting");
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setSetting(settingsModel);
+
+        NavHeaderMainBinding _bind = DataBindingUtil.inflate(getLayoutInflater(), R.layout.nav_header_main, binding
+                .navView, false);
+        binding.navView.addHeaderView(_bind.getRoot());
+        _bind.setSetting(settingsModel);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
