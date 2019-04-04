@@ -13,7 +13,7 @@ public class SettingsModel implements Serializable {
         this.themeApp = themeApp;
         this.fontSize = fontSize;
         if (nightShift) {
-            this.nightShift = Color.parseColor("#d1cca5")
+            this.nightShift = Color.parseColor("#d1cca5");
         }
     }
 
