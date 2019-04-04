@@ -12,8 +12,10 @@ import android.widget.TextView;
 
 import com.MVP.team5.universenews.R;
 import com.MVP.team5.universenews.ui.activity.MainActivity;
+import com.MVP.team5.universenews.ui.fragment.dantri.DanTriDetailBlankFragment;
 import com.MVP.team5.universenews.ui.fragment.dantri.model.DanTri_KHCN_Content;
 import com.MVP.team5.universenews.ui.fragment.gamek.GamekWebviewFragment;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -61,11 +63,12 @@ public class DanTriKHCNAdapter extends BaseAdapter {
         }
         holder.title.setText(getItem(i).getTitle());
         holder.des.setText(getItem(i).getDes());
-        holder.img.setImageResource(R.drawable.newspaper_dantri);
+        //holder.img.setBackground(context.getDrawable(R.drawable.baomoi));
+        Glide.with(context).load(list.get(i).getImg()).into(holder.img);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) context).changeFragment(GamekWebviewFragment.newInstance(i, list.get(i).getLink()));
+                ((MainActivity) context).changeFragment(DanTriDetailBlankFragment.newInstance(i, list.get(i).getLink()));
                 ((MainActivity) context).setTitle(list.get(i).getTitle());
             }
         });

@@ -13,6 +13,6 @@
     <string name="language">Ngôn ngữ</string>
     <string name="news_main">Trang chủ</string>
     <string name="gamek_ict">Tin ICT</string>
-    <string name="aaa">Ứng dụng này yêu cầu kết nối internet, vui lòng thử lại.</string>
+    <string name="check_network">Ứng dụng này yêu cầu kết nối internet, vui lòng thử lại.</string>
     <string name="exit_text"><font color="#40C4FF">Bạn thực sự muốn thoát ứng dụng tuyệt vời này? :((</font></string>
 </resources>

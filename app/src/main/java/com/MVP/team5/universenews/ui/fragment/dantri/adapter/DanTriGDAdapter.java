@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.MVP.team5.universenews.R;
 import com.MVP.team5.universenews.ui.activity.MainActivity;
+import com.MVP.team5.universenews.ui.fragment.dantri.DanTriDetailBlankFragment;
 import com.MVP.team5.universenews.ui.fragment.dantri.model.DanTri_GD_Content;
 import com.MVP.team5.universenews.ui.fragment.gamek.GamekWebviewFragment;
 
@@ -65,7 +66,7 @@ public class DanTriGDAdapter extends BaseAdapter {
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)context).changeFragment(GamekWebviewFragment.newInstance(i, list.get(i).getLink()));
+                ((MainActivity)context).changeFragment(DanTriDetailBlankFragment.newInstance(i, list.get(i).getLink()));
                 ((MainActivity)context).setTitle(list.get(i).getTitle());
             }
         });

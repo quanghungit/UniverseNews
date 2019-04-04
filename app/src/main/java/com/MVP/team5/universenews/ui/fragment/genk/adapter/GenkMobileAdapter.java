@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.MVP.team5.universenews.R;
 import com.MVP.team5.universenews.ui.activity.MainActivity;
 import com.MVP.team5.universenews.ui.fragment.gamek.GamekWebviewFragment;
+import com.MVP.team5.universenews.ui.fragment.genk.GenkNewsDetailFragment;
 import com.MVP.team5.universenews.ui.fragment.genk.model.Genk_Mobile_Content;
 import com.bumptech.glide.Glide;
 
@@ -66,7 +67,7 @@ public class GenkMobileAdapter extends BaseAdapter{
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)context).changeFragment(GamekWebviewFragment.newInstance(i, list.get(i).getLink()));
+                ((MainActivity)context).changeFragment(GenkNewsDetailFragment.newInstance(i, list.get(i).getLink()));
                 ((MainActivity)context).setTitle(list.get(i).getTitle());
             }
         });

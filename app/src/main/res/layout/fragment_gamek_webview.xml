@@ -1,12 +1,21 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.MVP.team5.universenews.ui.fragment.gamek.GamekWebviewFragment">
+<layout>
 
-    <WebView
-        android:id="@+id/gamekWebview"
+    <data>
+        <variable
+            name="setting"
+            type="com.MVP.team5.universenews.ui.model.SettingsModel"/>
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:context="com.MVP.team5.universenews.ui.fragment.gamek.GamekWebviewFragment">
 
-</FrameLayout>
+        <WebView
+            android:id="@+id/gamek_detail_webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </FrameLayout>
+</layout>
