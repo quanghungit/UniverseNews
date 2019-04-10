@@ -2,6 +2,7 @@ package com.MVP.team5.universenews.ui.fragment;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.MVP.team5.universenews.R;
+import com.MVP.team5.universenews.ui.Utils.Utilities;
 import com.MVP.team5.universenews.ui.activity.MainActivity;
 import com.MVP.team5.universenews.ui.fragment.dantri.DanTriKHCNFragment;
 import com.MVP.team5.universenews.ui.fragment.gamek.GamekFragment;
@@ -29,7 +31,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     ImageButton gamek, genk, dantri, soha, baomoi, haitugio;
     TextView textView;
 
-    MainActivity mainActivity;
+    View nightShiftLayout;
 
     public MainFragment() {
         // Required empty public constructor
@@ -59,6 +61,8 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         genk = view.findViewById(R.id.imGenk);
         dantri = view.findViewById(R.id.imDantri);
         textView = view.findViewById(R.id.aaa);
+
+        nightShiftLayout = view.findViewById(R.id.nightShiftMainLayout);
 
         gamek.setOnClickListener(this);
         genk.setOnClickListener(this);

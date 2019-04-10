@@ -1,6 +1,7 @@
 package com.MVP.team5.universenews.ui.fragment.Saved.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.MVP.team5.universenews.R;
 import com.MVP.team5.universenews.ui.Utils.DataBase.MyDatabaseHelper;
+import com.MVP.team5.universenews.ui.Utils.Utilities;
 import com.MVP.team5.universenews.ui.activity.MainActivity;
 import com.MVP.team5.universenews.ui.fragment.Saved.Detail.SavedDetailFragment;
 import com.MVP.team5.universenews.ui.fragment.gamek.GamekWebviewFragment;
@@ -41,6 +43,10 @@ public class SavedAdapter extends RecyclerView.Adapter<SavedAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int i) {
         final NewsDetailModel news = mList.get(i);
+
+        if (Utilities.getNight(context)) {
+            holder.itemView.setBackgroundColor(Color.parseColor("#E8BBAF74"));
+        }
         holder.title.setText(news.getTilte());
         holder.desc.setText(news.getDesc());
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {

@@ -3,6 +3,7 @@ package com.MVP.team5.universenews.ui.fragment.gamek;
 
 import android.annotation.SuppressLint;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -89,6 +90,11 @@ public class GamekWebviewFragment extends Fragment {
 
         webView.getSettings().setDefaultFontSize(Utilities.getFont(getContext()));
         webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        webView.getSettings();
+
+        if (Utilities.getNight(getContext())) {
+            webView.setBackgroundColor(Color.parseColor("#E8BBAF74"));
+        }
 
         btnSaveNews.setOnClickListener(new View.OnClickListener() {
             @Override

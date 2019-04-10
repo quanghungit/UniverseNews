@@ -13,7 +13,9 @@ public class SettingsModel implements Serializable {
         this.themeApp = themeApp;
         this.fontSize = fontSize;
         if (nightShift) {
-            this.nightShift = Color.parseColor("#d1cca5");
+            this.nightShift = Color.parseColor("#E8BBAF74");
+        } else {
+            this.nightShift = Color.parseColor("#FFFFFF");
         }
     }
 
@@ -33,12 +35,15 @@ public class SettingsModel implements Serializable {
         this.fontSize = fontSize;
     }
 
-    public int isNightShift() {
+    public int getNightShift() {
         return nightShift;
     }
 
-    public void setNightShift(int nightShift) {
-        this.nightShift = nightShift;
+    public void setNightShift(boolean nightShift) {
+        if (nightShift) {
+            this.nightShift = Color.parseColor("#E8BBAF74");
+        } else {
+            this.nightShift = Color.parseColor("#FFFFFF");
+        }
     }
-
 }

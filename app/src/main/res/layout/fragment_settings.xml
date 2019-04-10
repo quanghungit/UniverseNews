@@ -4,7 +4,7 @@
 
         <variable
             name="settings"
-            type="com.MVP.team5.universenews.ui.model.SettingsModel"/>
+            type="com.MVP.team5.universenews.ui.model.SettingsModel" />
 
     </data>
 
@@ -13,28 +13,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:id="@+id/nightShiftSettingsLayout"
+        android:background="@{settings.nightShift}"
         tools:context="com.MVP.team5.universenews.ui.fragment.SettingsFragment">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:padding="20dp">
 
             <TextView
                 android:id="@+id/settings_tv_theme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chọn Theme App"/>
+                android:text="Chọn Theme App" />
 
             <View
-                android:layout_marginTop="5dp"
-                android:background="@{settings.themeApp}"
                 android:id="@+id/theme_demo"
                 android:layout_width="match_parent"
-                android:layout_height="40dp" />
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@{settings.themeApp}" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,14 +55,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
-                    android:text="Font Size"/>
+                    android:text="Font Size" />
 
                 <TextView
                     android:id="@+id/settings_tv_font_size"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="10"
+                    android:text="20"
                     android:textColor="#000000" />
             </LinearLayout>
 
@@ -68,7 +71,8 @@
                 style="@style/Widget.AppCompat.SeekBar.Discrete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:max="50"/>
+                android:max="50"
+                android:value="50" />
 
         </LinearLayout>
 
@@ -81,7 +85,7 @@
                 android:id="@+id/switch1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Chế Độ Chống Mỏi Mắt"/>
+                android:text="Chế Độ Chống Mỏi Mắt" />
 
         </LinearLayout>
 

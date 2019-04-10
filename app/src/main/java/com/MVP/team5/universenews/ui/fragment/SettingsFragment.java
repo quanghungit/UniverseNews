@@ -2,6 +2,7 @@ package com.MVP.team5.universenews.ui.fragment;
 
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ import com.MVP.team5.universenews.R;
 import com.MVP.team5.universenews.databinding.FragmentSettingsBinding;
 import com.MVP.team5.universenews.databinding.NavHeaderMainBinding;
 import com.MVP.team5.universenews.ui.Utils.Utilities;
+import com.MVP.team5.universenews.ui.activity.MainActivity;
 import com.MVP.team5.universenews.ui.model.SettingsModel;
 
 import top.defaults.colorpicker.ColorPickerPopup;
@@ -63,10 +66,7 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         toolbar = getActivity().findViewById(R.id.toolbar);
-        //    toolbar.setBackgroundColor(Color.parseColor("#FF0000"));
-
         initView();
         attatchEvent();
     }
@@ -79,9 +79,11 @@ public class SettingsFragment extends Fragment {
 
         binding.settingsTvFont.setTextSize(settingsModel.getFontSize());
         binding.settingsTvFontSize.setTextSize(settingsModel.getFontSize());
+        binding.settingsTvFontSize.setText(String.valueOf(settingsModel.getFontSize()));
         binding.settingsTvTheme.setTextSize(settingsModel.getFontSize());
         binding.switch1.setTextSize(settingsModel.getFontSize());
         binding.settingsSkFont.setProgress(settingsModel.getFontSize());
+        binding.switch1.setChecked(Utilities.getNight(getActivity()));
     }
 
     void attatchEvent() {
@@ -144,6 +146,18 @@ public class SettingsFragment extends Fragment {
                                 binding.invalidateAll();
                             }
                         });
+            }
+        });
+
+        binding.switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Utilities.saveNight(getContext(), isChecked);
+                settingsModel.setNightShift(isChecked);
+                getActivity().findViewById(R.id.nav_view).setBackgroundColor(settingsModel.getNightShift());
+                getActivity().findViewById(R.id.flContents).setBackgroundColor(settingsModel.getNightShift());
+                binding.executePendingBindings();
+                binding.invalidateAll();
             }
         });
     }

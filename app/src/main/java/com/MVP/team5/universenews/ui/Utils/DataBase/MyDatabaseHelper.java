@@ -52,6 +52,19 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void addListNews(List<NewsDetailModel> list) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        for (NewsDetailModel news: list) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(TITLE, news.getTilte());
+            contentValues.put(DESC, news.getDesc());
+            contentValues.put(DATA, news.getHtml());
+            db.insert(DB_NAME, null, contentValues);
+           // db.close();
+        }
+        db.close();
+    }
+
     public List<NewsDetailModel> getNews() {
         List<NewsDetailModel> list = new ArrayList<>();
 
@@ -69,6 +82,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 list.add(news);
             } while (cursor.moveToNext());
         }
+
         return list;
     }
 
@@ -89,6 +103,12 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public void deleteNews(NewsDetailModel news){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(DB_NAME, ID + " = ? ", new String[]{String.valueOf(news.getId())});
+        db.close();
+    }
+
+    public void clearAll() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("Delete from " + DB_NAME);
         db.close();
     }
 }

@@ -2,6 +2,7 @@ package com.MVP.team5.universenews.ui.fragment.Saved.Detail;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -60,6 +61,10 @@ public class SavedDetailFragment extends Fragment {
             webView.loadData(newsDetailModel.getHtml(), "text/html; charset=utf-8", "UTF-8");
         } else {
             textView.setText(newsDetailModel.getHtml());
+        }
+
+        if (Utilities.getNight(getContext())) {
+            webView.setBackgroundColor(Color.parseColor("#E8BBAF74"));
         }
     }
 

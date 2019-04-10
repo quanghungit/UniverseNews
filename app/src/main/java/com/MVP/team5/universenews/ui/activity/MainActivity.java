@@ -3,6 +3,7 @@ package com.MVP.team5.universenews.ui.activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -63,17 +64,17 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        //ft.replace(R.id.flContents,new MainFragment()).commit();
         ft.replace(R.id.flContents, new MainFragment()).commit();
 
         boolean checkNetwork = isOnline();
         if (checkNetwork == false) {
             Toast.makeText(this,getResources().getString(R.string.check_network).toString(),Toast.LENGTH_SHORT).show();
         }
-//        else {
-//            Toast.makeText(this,"ok",Toast.LENGTH_SHORT).show();
-//        }
 
+        if (Utilities.getNight(this)) {
+            navigationView.setBackgroundColor(Color.parseColor("#E8BBAF74"));
+            findViewById(R.id.flContents).setBackgroundColor(Color.parseColor("#E8BBAF74"));
+        }
     }
 
     @Override
@@ -87,18 +88,13 @@ public class MainActivity extends AppCompatActivity
             } else {
                 if (fragment instanceof MainFragment) {
                     exit();
-                    //super.onBackPressed();
                 } else {
                     onBackStackChanged();
                     super.onBackPressed();
                 }
             }
-        } catch (Exception e) {
-
-        }
-
+        } catch (Exception e) {}
     }
-
 
     public void onBackStackChanged() {
         int lastBackStackEntryCount = getSupportFragmentManager().getBackStackEntryCount() - 1;

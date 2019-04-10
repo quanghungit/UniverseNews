@@ -10,6 +10,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@{setting.nightShift}"
         tools:context="com.MVP.team5.universenews.ui.fragment.gamek.GamekWebviewFragment">
 
         <WebView

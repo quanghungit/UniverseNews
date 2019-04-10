@@ -1,6 +1,7 @@
 package com.MVP.team5.universenews.ui.fragment.gamek.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -62,6 +63,10 @@ public class GamekPcAdapter extends BaseAdapter{
         } else {
             holder = (ViewHolder) view.getTag();
         }
+        if (Utilities.getNight(context)) {
+            holder.itemView.setBackgroundColor(Color.parseColor("#E8BBAF74"));
+        }
+
         holder.title.setText(getItem(i).getTitle());
         holder.des.setText(getItem(i).getDes());
 
