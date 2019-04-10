@@ -1,7 +1,9 @@
 package com.MVP.team5.universenews.ui.fragment;
 
 
+import android.annotation.TargetApi;
 import android.databinding.DataBindingUtil;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,7 +19,6 @@ import com.MVP.team5.universenews.R;
 import com.MVP.team5.universenews.databinding.FragmentSettingsBinding;
 import com.MVP.team5.universenews.databinding.NavHeaderMainBinding;
 import com.MVP.team5.universenews.ui.Utils.Utilities;
-import com.MVP.team5.universenews.ui.activity.MainActivity;
 import com.MVP.team5.universenews.ui.model.SettingsModel;
 
 import top.defaults.colorpicker.ColorPickerPopup;
@@ -75,6 +76,12 @@ public class SettingsFragment extends Fragment {
         fontSize = getActivity().findViewById(R.id.settings_tv_font_size);
         skFont = getActivity().findViewById(R.id.settings_sk_font);
         demoTheme = getActivity().findViewById(R.id.theme_demo);
+
+        binding.settingsTvFont.setTextSize(settingsModel.getFontSize());
+        binding.settingsTvFontSize.setTextSize(settingsModel.getFontSize());
+        binding.settingsTvTheme.setTextSize(settingsModel.getFontSize());
+        binding.switch1.setTextSize(settingsModel.getFontSize());
+        binding.settingsSkFont.setProgress(settingsModel.getFontSize());
     }
 
     void attatchEvent() {
@@ -84,6 +91,12 @@ public class SettingsFragment extends Fragment {
                 fontSize.setText(String.valueOf(i));
                 Utilities.saveFont(getContext(), i);
                 settingsModel.setFontSize(i);
+
+                binding.settingsTvFont.setTextSize(i);
+                binding.settingsTvFontSize.setTextSize(i);
+                binding.settingsTvTheme.setTextSize(i);
+                binding.switch1.setTextSize(i);
+
                 binding.executePendingBindings();
                 binding.invalidateAll();
             }

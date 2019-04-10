@@ -27,6 +27,7 @@ import com.MVP.team5.universenews.ui.Utils.Utilities;
 import com.MVP.team5.universenews.ui.fragment.AboutFragment;
 import com.MVP.team5.universenews.ui.fragment.MainFragment;
 import com.MVP.team5.universenews.ui.fragment.SettingsFragment;
+import com.MVP.team5.universenews.ui.fragment.Saved.SavedFragment;
 import com.MVP.team5.universenews.ui.model.SettingsModel;
 
 public class MainActivity extends AppCompatActivity
@@ -117,6 +118,12 @@ public class MainActivity extends AppCompatActivity
             changeFragment(new MainFragment());
             setTitle(R.string.app_name);
         }
+
+        else if (id == R.id.nav_Saved) {
+            changeFragment(new SavedFragment());
+            setTitle("Saved");
+        }
+
         else if (id == R.id.nav_settings) {
             changeFragment(new SettingsFragment());
             setTitle("Settings");

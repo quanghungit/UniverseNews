@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/customTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="This is the new tilte!"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/customDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Here we need to create the adapter which will actually populate the data into the RecyclerView. The adapter's role is to convert an object at a position into a list row item to be inserted.
+
+However with a RecyclerView the adapter requires the existence of a object which describes and provides access to all the views within each item row. We can create the basic empty adapter and holder together in ContactsAdapter.java as follows:" />
+
+</LinearLayout>

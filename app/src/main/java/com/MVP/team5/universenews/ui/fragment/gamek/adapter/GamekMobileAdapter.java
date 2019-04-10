@@ -2,6 +2,7 @@ package com.MVP.team5.universenews.ui.fragment.gamek.adapter;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import com.MVP.team5.universenews.ui.Utils.Utilities;
 import com.MVP.team5.universenews.ui.activity.MainActivity;
 import com.MVP.team5.universenews.ui.fragment.gamek.GamekWebviewFragment;
 import com.MVP.team5.universenews.ui.fragment.gamek.model.Gamek_Mobile_Content;
+import com.MVP.team5.universenews.ui.model.NewsDetailModel;
 import com.MVP.team5.universenews.ui.model.SettingsModel;
 import com.bumptech.glide.Glide;
 
@@ -74,14 +76,22 @@ public class GamekMobileAdapter extends BaseAdapter {
            holder = (ViewHolder) view.getTag();
         }
         holder.title.setText(getItem(i).getTitle());
-        holder.title.setTextSize(settingsModel.getFontSize());
         holder.des.setText(getItem(i).getDes());
-        holder.des.setTextSize(settingsModel.getFontSize());
+
+        holder.title.setTextSize(Utilities.getFont(context));
+        holder.des.setTextSize(Utilities.getFont(context));
+
         Glide.with(context).load(list.get(i).getImg()).into(holder.img);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)context).changeFragment(GamekWebviewFragment.newInstance(i, list.get(i).getLink()));
+
+                Bundle bundle = new Bundle();
+                bundle.putString("link", getItem(i).getLink());
+                bundle.putString("title", getItem(i).getTitle());
+                bundle.putString("desc", getItem(i).getDes());
+
+                ((MainActivity)context).changeFragment(GamekWebviewFragment.newInstance(bundle, 1));
                 ((MainActivity)context).setTitle(list.get(i).getTitle());
             }
         });

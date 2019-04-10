@@ -10,10 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.MVP.team5.universenews.R;
+import com.MVP.team5.universenews.ui.Utils.DataBase.MyDatabaseHelper;
 import com.MVP.team5.universenews.ui.Utils.Utilities;
 import com.MVP.team5.universenews.ui.fragment.genk.GenkNewsDetailFragment;
+import com.MVP.team5.universenews.ui.model.NewsDetailModel;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -25,17 +29,17 @@ import org.jsoup.nodes.Element;
 public class DanTriDetailBlankFragment extends Fragment {
 
     WebView webView;
+    Button button;
+    MyDatabaseHelper myDatabaseHelper;
+    NewsDetailModel newsDetailModel;
 
     public DanTriDetailBlankFragment() {
         // Required empty public constructor
     }
 
-    public static DanTriDetailBlankFragment newInstance(int i, String link) {
-        Bundle args = new Bundle();
-        args.putInt("i", i);
-        args.putString("link", link);
+    public static DanTriDetailBlankFragment newInstance(NewsDetailModel newsDetailModel) {
         DanTriDetailBlankFragment fragment = new DanTriDetailBlankFragment();
-        fragment.setArguments(args);
+        fragment.newsDetailModel = newsDetailModel;
         return fragment;
     }
 
@@ -50,10 +54,24 @@ public class DanTriDetailBlankFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        myDatabaseHelper = new MyDatabaseHelper(getContext());
+
+        button = view.findViewById(R.id.btnSaveBaoMoiNews);
+        button.setVisibility(View.INVISIBLE);
+
         webView = view.findViewById(R.id.dantri_detail_webview);
         webView.getSettings().setDefaultFontSize(Utilities.getFont(getContext())/2);
 
         setupData(getArguments().getString("link"));
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDatabaseHelper.addNews(newsDetailModel);
+                Toast.makeText(getContext(), "Lưu thành công!",Toast.LENGTH_SHORT).show();
+                button.setVisibility(View.INVISIBLE);
+            }
+        });
     }
 
     private void setupData(final String mLink) {
@@ -81,8 +99,13 @@ public class DanTriDetailBlankFragment extends Fragment {
             @Override
             protected void onPostExecute(String mData) {
                 super.onPostExecute(mData);
-                //textView.setText(Html.fromHtml(mData));
+                newsDetailModel = new NewsDetailModel(
+                        getArguments().getString("title"),
+                        getArguments().getString("desc"),
+                        mData
+                );
                 webView.loadData(mData, "text/html; charset=utf-8","UTF-8");
+                button.setVisibility(View.VISIBLE);
             }
         }.execute();
 

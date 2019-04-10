@@ -81,104 +81,12 @@
                 android:textSize="14dp"
                 android:fontFamily="monospace"
                 android:textStyle="bold"
-                android:text="DanTri"
+                android:text="Baomoi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
-
-
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="50px"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-
-        <LinearLayout
-            android:clickable="true"
-            android:layout_marginRight="18dp"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageButton
-                android:id="@+id/imSoha"
-                android:background="@drawable/newspaper_soha"
-                android:layout_width="90dp"
-                android:layout_height="90dp" />
-
-            <TextView
-                android:textColor="@color/colorNewspaperName"
-                android:layout_gravity="center"
-                android:textSize="14dp"
-                android:fontFamily="monospace"
-                android:textStyle="bold"
-                android:text="Soha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_marginRight="18dp"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageButton
-                android:id="@+id/imbaomoi"
-                android:background="@drawable/baomoi"
-                android:layout_width="90dp"
-                android:layout_height="90dp" />
-
-            <TextView
-                android:textColor="@color/colorNewspaperName"
-                android:layout_gravity="center"
-                android:textSize="14dp"
-                android:fontFamily="monospace"
-                android:textStyle="bold"
-                android:text="BaoMoi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginRight="18dp"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageButton
-                android:id="@+id/im24gio"
-                android:background="@drawable/haitugio"
-                android:layout_width="90dp"
-                android:layout_height="90dp" />
-
-            <TextView
-                android:textColor="@color/colorNewspaperName"
-                android:layout_gravity="center"
-                android:textSize="14dp"
-                android:fontFamily="monospace"
-                android:textStyle="bold"
-                android:text="24h"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-
-
-    </LinearLayout>
-
-
-
 
 </LinearLayout>
