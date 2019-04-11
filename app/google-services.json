@@ -1,52 +1,37 @@
 {
   "project_info": {
-    "project_number": "697086870932",
-    "firebase_url": "https://universenews-dde66.firebaseio.com",
-    "project_id": "universenews-dde66",
-    "storage_bucket": "universenews-dde66.appspot.com"
+    "project_number": "204939815547",
+    "firebase_url": "https://universe-news.firebaseio.com",
+    "project_id": "universe-news",
+    "storage_bucket": "universe-news.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:697086870932:android:1aef70ad85e91dba",
+        "mobilesdk_app_id": "1:204939815547:android:1aef70ad85e91dba",
         "android_client_info": {
           "package_name": "com.MVP.team5.universenews"
         }
       },
       "oauth_client": [
         {
-          "client_id": "697086870932-kbuhn3ad4lkfggkl5gkspbkhklkpnt1h.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.MVP.team5.universenews",
-            "certificate_hash": "2f16b82ea3ec86d5769d94bda7aa3d9955185dd7"
-          }
-        },
-        {
-          "client_id": "697086870932-apobb31rtup5h66v6ju2akddiasqs87i.apps.googleusercontent.com",
+          "client_id": "204939815547-5h5jigcrehvv3f9s4b7v7lm50l46ove1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDUE2CNYYxW5VLOH1AEiZSUcJ47tw8TrXo"
+          "current_key": "AIzaSyA4gYqSD-nM6nk4CaJAZGqXtSXZEJuwNaE"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "697086870932-apobb31rtup5h66v6ju2akddiasqs87i.apps.googleusercontent.com",
+              "client_id": "204939815547-5h5jigcrehvv3f9s4b7v7lm50l46ove1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }

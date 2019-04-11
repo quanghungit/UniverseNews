@@ -2,6 +2,7 @@ package com.MVP.team5.universenews.ui.fragment.dantri;
 
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.MVP.team5.universenews.R;
+import com.MVP.team5.universenews.ui.Utils.Utilities;
 import com.MVP.team5.universenews.ui.fragment.dantri.adapter.DanTriKHCNAdapter;
 import com.MVP.team5.universenews.ui.fragment.dantri.model.DanTri_KHCN_Content;
 
@@ -54,6 +56,9 @@ public class DanTriKHCNFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         list = view.findViewById(R.id.dantri_khcn_listview);
         swipeRefreshLayout = view.findViewById(R.id.dantri_khcn_refresh);
+        if (Utilities.getNight(getContext())) {
+            swipeRefreshLayout.setBackgroundColor(Color.parseColor("#E8BBAF74"));
+        }
         setupData();
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

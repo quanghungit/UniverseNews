@@ -90,7 +90,5 @@ public class GenkNewsDetailFragment extends Fragment {
                 webView.loadData(mData, "text/html; charset=utf-8","UTF-8");
             }
         }.execute();
-
     }
-
 }

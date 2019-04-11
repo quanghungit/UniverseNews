@@ -63,13 +63,7 @@ public class DanTriGDAdapter extends BaseAdapter {
         holder.title.setText(getItem(i).getTitle());
         holder.des.setText(getItem(i).getDes());
         holder.img.setImageResource(R.drawable.newspaper_dantri);
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity)context).changeFragment(DanTriDetailBlankFragment.newInstance(i, list.get(i).getLink()));
-                ((MainActivity)context).setTitle(list.get(i).getTitle());
-            }
-        });
+
         return view;
     }
 

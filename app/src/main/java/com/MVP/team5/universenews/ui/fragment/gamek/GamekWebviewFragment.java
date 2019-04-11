@@ -1,7 +1,9 @@
 package com.MVP.team5.universenews.ui.fragment.gamek;
 
 
+import android.annotation.SuppressLint;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,13 +15,17 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.MVP.team5.universenews.R;
 import com.MVP.team5.universenews.databinding.FragmentGamekWebviewBinding;
 import com.MVP.team5.universenews.databinding.FragmentSettingsBinding;
+import com.MVP.team5.universenews.ui.Utils.DataBase.MyDatabaseHelper;
 import com.MVP.team5.universenews.ui.Utils.Utilities;
 import com.MVP.team5.universenews.ui.fragment.gamek.model.Gamek_TrangChu_Content;
+import com.MVP.team5.universenews.ui.model.NewsDetailModel;
 import com.MVP.team5.universenews.ui.model.SettingsModel;
 
 import org.jsoup.Jsoup;
@@ -34,23 +40,25 @@ import java.util.ArrayList;
  */
 public class GamekWebviewFragment extends Fragment {
     private WebView webView;
+    Button btnSaveNews;
 
     SettingsModel settingsModel;
     FragmentGamekWebviewBinding binding;
+    MyDatabaseHelper databaseHelper;
+
+    NewsDetailModel newsDetailModel;
+    int newsID; //1:Gamek 2:Genk 3:BaoMoi
 
     public GamekWebviewFragment() {
         // Required empty public constructor
     }
 
-    public static GamekWebviewFragment newInstance(int i, String link) {
-        Bundle args = new Bundle();
-        args.putInt("i", i);
-        args.putString("link", link);
+    public static GamekWebviewFragment newInstance(Bundle bundle, int id) {
         GamekWebviewFragment fragment = new GamekWebviewFragment();
-        fragment.setArguments(args);
+        fragment.setArguments(bundle);
+        fragment.newsID = id;
         return fragment;
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,16 +79,37 @@ public class GamekWebviewFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        webView = view.findViewById(R.id.gamek_detail_webview);
-        webView.getSettings().setDefaultFontSize(Utilities.getFont(getContext())/2);
-        webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
 
+        btnSaveNews = view.findViewById(R.id.btnSaveNews);
+        btnSaveNews.setVisibility(View.INVISIBLE);
+
+        databaseHelper = new MyDatabaseHelper(getContext());
+
+        btnSaveNews = view.findViewById(R.id.btnSaveNews);
+        webView = view.findViewById(R.id.gamek_detail_webview);
+
+        webView.getSettings().setDefaultFontSize(Utilities.getFont(getContext()));
+        webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        webView.getSettings();
+
+        if (Utilities.getNight(getContext())) {
+            webView.setBackgroundColor(Color.parseColor("#E8BBAF74"));
+        }
+
+        btnSaveNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseHelper.addNews(newsDetailModel);
+                Toast.makeText(getContext(), "Lưu thành công!", Toast.LENGTH_SHORT).show();
+                btnSaveNews.setVisibility(View.INVISIBLE);
+            }
+        });
 
         String link = getArguments().getString("link");
-        System.out.println("Tuan Anh Dep Trai Vo Dich" + link);
         setupData(link);
     }
 
+    @SuppressLint("StaticFieldLeak")
     private void setupData(final String mLink) {
         System.out.println("OK---------------");
         new AsyncTask<Void, Void, String>() {
@@ -91,10 +120,22 @@ public class GamekWebviewFragment extends Fragment {
             protected String doInBackground(Void... voids) {
                 try {
                     Document document = Jsoup.connect(mLink).get();
+                    Element body;
+                    switch (newsID) {
+                        case 1:
+                            body = document.select("div.rightdetail_content").first();
+                            mData = body.html();
+                            break;
+                        case 2:
+                            body = document.select("#ContentDetail").first();
+                            mData = body.html();
+                            break;
+                        case 3:
+                            body = document.select("article.content_detail").first();
+                            mData = body.html();
+                            break;
+                    }
 
-                    Element body = document.select("div.rightdetail_content").first();
-                    System.out.println(" Ahihi do ngok: " + body.text() + "\n" + document.title());
-                    mData = body.html();
                 } catch (Exception e) {
 
                 }
@@ -104,11 +145,14 @@ public class GamekWebviewFragment extends Fragment {
             @Override
             protected void onPostExecute(String mData) {
                 super.onPostExecute(mData);
-                webView.loadData(mData, "text/html; charset=utf-8","UTF-8");
+                newsDetailModel = new NewsDetailModel(
+                        getArguments().getString("title"),
+                        getArguments().getString("desc"),
+                        mData
+                );
+                webView.loadData(mData, "text/html; charset=utf-8", "UTF-8");
+                btnSaveNews.setVisibility(View.VISIBLE);
             }
         }.execute();
-
     }
-
-
 }
